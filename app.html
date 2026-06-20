@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream2Career - Student Cockpit</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-wrapper">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="app-sidebar">
+            <div class="sidebar-brand">
+                <div class="sidebar-logo-icon">D2C</div>
+                <div>
+                    <h5 class="mb-0 fw-bold" style="font-family: var(--font-heading); color: var(--text-primary);">Dream2Career</h5>
+                    <span class="text-muted small" style="font-size: 11px;">Student Cockpit</span>
+                </div>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li class="sidebar-item">
+                    <a class="sidebar-link active" data-target="dashboard">
+                        <i class="bi bi-grid-1x2"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" data-target="explorer">
+                        <i class="bi bi-search"></i>
+                        <span>Career Explorer</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" data-target="matching">
+                        <i class="bi bi-shuffle"></i>
+                        <span>Career Matching</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" data-target="analyzer">
+                        <i class="bi bi-activity"></i>
+                        <span>Skill Gap Analyzer</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" data-target="roadmap">
+                        <i class="bi bi-signpost-split"></i>
+                        <span>Learning Roadmap</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" data-target="projects">
+                        <i class="bi bi-folder2-open"></i>
+                        <span>Project Center</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" data-target="certifications">
+                        <i class="bi bi-patch-check"></i>
+                        <span>Certification Hub</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" data-target="resume">
+                        <i class="bi bi-file-earmark-person"></i>
+                        <span>Resume Builder</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" data-target="interviews">
+                        <i class="bi bi-chat-quote"></i>
+                        <span>Interview Prep</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" data-target="tracker">
+                        <i class="bi bi-graph-up"></i>
+                        <span>Progress Tracker</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" data-target="profile">
+                        <i class="bi bi-person-circle"></i>
+                        <span>Profile & Setup</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <a href="index.html" class="btn btn-outline-secondary w-100 py-2 border-secondary rounded-pill small fw-semibold text-decoration-none">
+                    <i class="bi bi-box-arrow-left"></i> Exit to Landing
+                </a>
+            </div>
+        </aside>
+
+        <!-- Mobile Sidebar Toggle -->
+        <button class="mobile-sidebar-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header bar -->
+            <header class="app-header no-print">
+                <div class="d-flex align-items-center gap-3">
+                    <h2 class="h5 mb-0 fw-bold d-none d-md-block" id="app-view-title" style="font-family: var(--font-heading);">Dashboard</h2>
+                </div>
+
+                <div class="search-bar d-none d-sm-block">
+                    <i class="bi bi-search"></i>
+                    <input type="text" id="global-search" placeholder="Search careers, skills, projects...">
+                </div>
+
+                <div class="header-actions">
+                    <!-- Bookmark Dropdown -->
+                    <div class="dropdown">
+                        <button class="bookmark-toggle-btn position-relative" id="bookmark-dropdown-btn" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Bookmarks">
+                            <i class="bi bi-bookmark-star"></i>
+                            <span class="bookmark-badge d-none" id="bookmark-count-badge">0</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end glass-panel border border-secondary p-3" id="bookmark-dropdown-menu" style="min-width: 280px; z-index: 1050;">
+                            <h6 class="dropdown-header text-primary fw-bold px-0 mb-2">Bookmarked Paths</h6>
+                            <div id="bookmarks-list-container" class="small text-secondary">
+                                <p class="text-muted small mb-0 px-2 py-1">No careers bookmarked yet.</p>
+                            </div>
+                        </ul>
+                    </div>
+
+                    <!-- Theme Toggle -->
+                    <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
+                        <i class="bi bi-sun-fill" id="theme-icon"></i>
+                    </button>
+
+                    <!-- Profile Avatar -->
+                    <a class="user-profile-badge" id="header-profile-badge">
+                        <div class="user-avatar" id="avatar-initials">S</div>
+                        <span class="user-name-label" id="header-user-name">Student</span>
+                    </a>
+                </div>
+            </header>
+
+            <!-- 1. Dashboard View -->
+            <section class="view-section active animate-fade-in" id="view-dashboard">
+                <div class="row g-4 mb-4">
+                    <div class="col-lg-8">
+                        <div class="glass-panel p-4 bg-gradient-accent text-white h-100 d-flex flex-column justify-content-between rounded-4 shadow border-0 position-relative overflow-hidden">
+                            <div style="z-index: 2;">
+                                <span class="badge rounded-pill bg-white bg-opacity-20 px-3 py-2 text-white fw-bold mb-3">Goal Cockpit</span>
+                                <h1 class="h2 fw-bold mb-2">Welcome Back, <span id="dash-welcome-name">Student</span>!</h1>
+                                <p class="text-white-50 small mb-0" style="max-width: 500px;">
+                                    Track milestones, analyze skill requirements, and work toward your current target goal:
+                                    <strong class="text-white" id="dash-current-goal">Software Engineer</strong>.
+                                </p>
+                            </div>
+                            <div class="mt-4 d-flex flex-wrap gap-2" style="z-index: 2;">
+                                <button class="btn btn-white text-dark px-4 py-2 border-0 fw-bold rounded-pill shadow-sm" id="dash-resume-btn">Update Resume</button>
+                                <button class="btn btn-outline-light px-4 py-2 fw-semibold rounded-pill" id="dash-roadmap-btn">Open Roadmap</button>
+                            </div>
+                            <div class="position-absolute end-0 bottom-0 opacity-10 p-4 fs-1 d-none d-md-block" style="font-size: 8rem !important;"><i class="bi bi-award-fill"></i></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="glass-card p-4 h-100 d-flex align-items-center justify-content-between">
+                            <div>
+                                <h3 class="h5 fw-bold mb-1">Career Readiness</h3>
+                                <p class="text-secondary small mb-4">Calculated based on completed milestones.</p>
+                                <h2 class="fw-bold mb-0 text-primary" id="dash-readiness-label">0%</h2>
+                            </div>
+                            <div>
+                                <svg class="circle-progress-svg" width="100" height="100">
+                                    <defs>
+                                        <linearGradient id="cyan-violet-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="var(--accent-primary)" />
+                                            <stop offset="100%" stop-color="var(--accent-secondary)" />
+                                        </linearGradient>
+                                    </defs>
+                                    <circle class="circle-progress-bg" cx="50" cy="50" r="40" />
+                                    <circle class="circle-progress-fill" id="dash-progress-circle" cx="50" cy="50" r="40" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="glass-card p-4 h-100">
+                            <h3 class="h5 fw-bold mb-3"><i class="bi bi-check2-circle text-primary"></i> Skills Acquired</h3>
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <h2 class="mb-0 fw-bold" id="dash-skills-count">0</h2>
+                                <span class="text-muted small">Total skills verified</span>
+                            </div>
+                            <div class="progress mb-3" style="height: 6px;">
+                                <div class="progress-bar bg-gradient-cyan" role="progressbar" id="dash-skills-bar" style="width: 0%"></div>
+                            </div>
+                            <p class="text-muted small mb-0">Visit the <a class="text-primary text-decoration-none fw-semibold" href="#profile">Profile & Setup</a> tab to update your existing skillset catalog.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="glass-card p-4 h-100">
+                            <h3 class="h5 fw-bold mb-3"><i class="bi bi-folder-check text-success"></i> Projects Finished</h3>
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <h2 class="mb-0 fw-bold" id="dash-projects-count">0</h2>
+                                <span class="text-muted small">Projects completed</span>
+                            </div>
+                            <div class="progress mb-3" style="height: 6px;">
+                                <div class="progress-bar bg-gradient-emerald" role="progressbar" id="dash-projects-bar" style="width: 0%"></div>
+                            </div>
+                            <p class="text-muted small mb-0">Browse and launch interactive milestones in the <a class="text-primary text-decoration-none fw-semibold" href="#projects">Project Center</a>.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="glass-card p-4 h-100">
+                            <h3 class="h5 fw-bold mb-3"><i class="bi bi-patch-check-fill text-warning"></i> Certifications</h3>
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <h2 class="mb-0 fw-bold" id="dash-certs-count">0</h2>
+                                <span class="text-muted small">Certificates earned</span>
+                            </div>
+                            <div class="progress mb-3" style="height: 6px;">
+                                <div class="progress-bar bg-gradient-violet" role="progressbar" id="dash-certs-bar" style="width: 0%"></div>
+                            </div>
+                            <p class="text-muted small mb-0">Bookmark and track credential progress under the <a class="text-primary text-decoration-none fw-semibold" href="#certifications">Certification Hub</a>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4 mt-2">
+                    <div class="col-lg-8">
+                        <div class="glass-card p-4">
+                            <h3 class="h5 fw-bold mb-3">Recommended Next Tasks</h3>
+                            <div class="list-group list-group-flush" id="dash-tasks-list">
+                                <!-- Dynamically loaded task items -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="glass-card p-4 h-100">
+                            <h3 class="h5 fw-bold mb-3">Recent Bookmarks</h3>
+                            <div class="list-group list-group-flush" id="dash-bookmarks-list">
+                                <!-- Dynamically loaded bookmark shortcuts -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Career Explorer View -->
+            <section class="view-section animate-fade-in" id="view-explorer">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+                    <div>
+                        <h1 class="h3 fw-bold mb-1">Career Explorer</h1>
+                        <p class="text-secondary small mb-0">Browse through the 8 mapped digital domains or compare them side-by-side.</p>
+                    </div>
+                    <button class="btn bg-gradient-accent text-white px-4 py-2 rounded-pill border-0 shadow-sm" id="trigger-compare-btn">
+                        <i class="bi bi-columns-gap"></i> Compare Careers
+                    </button>
+                </div>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-md-8">
+                        <div class="glass-panel p-2 d-flex flex-wrap gap-2" id="explorer-category-filters">
+                            <button class="pill-badge active" data-category="all">All Fields</button>
+                            <button class="pill-badge" data-category="Tech & Development">Tech & Dev</button>
+                            <button class="pill-badge" data-category="Artificial Intelligence">AI</button>
+                            <button class="pill-badge" data-category="Data Science">Data Science</button>
+                            <button class="pill-badge" data-category="Creative & Design">Design</button>
+                            <button class="pill-badge" data-category="Business & Marketing">Business & Marketing</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid of Careers -->
+                <div class="row g-4" id="explorer-grid">
+                    <!-- Loaded dynamically via js -->
+                </div>
+
+                <!-- Career Path Detail Wrapper (Initially hidden) -->
+                <div class="glass-panel p-5 mt-5 d-none border-glow-primary position-relative" id="explorer-detail-panel">
+                    <button class="btn-close position-absolute top-0 end-0 m-4 border border-secondary" id="close-detail-btn" aria-label="Close details"></button>
+                    
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="sidebar-logo-icon" id="detail-icon" style="width: 60px; height: 60px; font-size: 30px;"><i class="bi bi-cpu"></i></div>
+                            <div>
+                                <h2 class="h1 fw-bold mb-1" id="detail-title">Software Engineer</h2>
+                                <span class="badge bg-secondary bg-opacity-20 text-secondary border border-secondary" id="detail-category">Tech</span>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-secondary rounded-pill px-4 py-2 border-secondary" id="detail-bookmark-btn">
+                                <i class="bi bi-bookmark"></i> Bookmark Path
+                            </button>
+                            <button class="btn bg-gradient-accent text-white rounded-pill border-0 px-4 py-2 shadow" id="detail-target-btn">
+                                <i class="bi bi-flag"></i> Set as Target Goal
+                            </button>
+                        </div>
+                    </div>
+
+                    <p class="lead text-secondary mb-4" id="detail-description"></p>
+
+                    <div class="row g-4 mb-5">
+                        <div class="col-md-6">
+                            <div class="glass-card p-4 h-100">
+                                <h3 class="h5 fw-bold mb-3 text-gradient"><i class="bi bi-check2-circle"></i> Required Core Skills</h3>
+                                <div class="d-flex flex-wrap gap-2" id="detail-skills-list"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="glass-card p-4 h-100">
+                                <h3 class="h5 fw-bold mb-3 text-gradient"><i class="bi bi-tools"></i> Recommended Tools & Stack</h3>
+                                <div class="d-flex flex-wrap gap-2" id="detail-tools-list"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="h4 fw-bold mb-4"><i class="bi bi-signpost-split text-primary"></i> Learning Roadmap Preview</h3>
+                    <div class="timeline-wrapper mb-5" id="detail-roadmap-preview">
+                        <!-- Loaded dynamically -->
+                    </div>
+
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-6">
+                            <div class="glass-card p-4 h-100">
+                                <h3 class="h5 fw-bold mb-3"><i class="bi bi-folder-symlink text-success"></i> Recommended Projects</h3>
+                                <div class="list-group list-group-flush" id="detail-projects-list"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="glass-card p-4 h-100">
+                                <h3 class="h5 fw-bold mb-3"><i class="bi bi-patch-check-fill text-warning"></i> Mapped Certifications</h3>
+                                <div class="list-group list-group-flush" id="detail-certs-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Career Matching System -->
+            <section class="view-section animate-fade-in" id="view-matching">
+                <div class="text-center mb-5">
+                    <h1 class="h2 fw-bold mb-1" style="font-family: var(--font-heading);">Career Matching System</h1>
+                    <p class="text-secondary small">Calculate matches dynamically based on interests, strengths, and subjects.</p>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="glass-panel p-5 border-secondary">
+                            <div id="matching-step-1">
+                                <h3 class="h5 fw-bold mb-4">Step 1: What fields interest you the most?</h3>
+                                <div class="d-flex flex-wrap gap-2 mb-4" id="match-interests-grid">
+                                    <!-- Interests Badges dynamically inserted -->
+                                </div>
+                                <div class="text-end">
+                                    <button class="btn bg-gradient-accent text-white px-5 py-3 border-0 fw-bold rounded-pill shadow-sm" id="match-next-1">Next: Subjects</button>
+                                </div>
+                            </div>
+
+                            <div id="matching-step-2" class="d-none">
+                                <h3 class="h5 fw-bold mb-4">Step 2: What are your favorite academic subjects?</h3>
+                                <div class="d-flex flex-wrap gap-2 mb-4" id="match-subjects-grid">
+                                    <!-- Subject Badges dynamically inserted -->
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <button class="btn btn-outline-secondary px-4 py-2 border-secondary rounded-pill" id="match-prev-2">Back</button>
+                                    <button class="btn bg-gradient-accent text-white px-5 py-3 border-0 fw-bold rounded-pill shadow-sm" id="match-next-2">Next: Strengths</button>
+                                </div>
+                            </div>
+
+                            <div id="matching-step-3" class="d-none">
+                                <h3 class="h5 fw-bold mb-4">Step 3: Choose your personal strengths</h3>
+                                <div class="d-flex flex-wrap gap-2 mb-4" id="match-strengths-grid">
+                                    <!-- Strengths Badges dynamically inserted -->
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <button class="btn btn-outline-secondary px-4 py-2 border-secondary rounded-pill" id="match-prev-3">Back</button>
+                                    <button class="btn bg-gradient-accent text-white px-5 py-3 border-0 fw-bold rounded-pill shadow-sm" id="match-next-3">Run Matching Algorithm</button>
+                                </div>
+                            </div>
+
+                            <!-- Results Section -->
+                            <div id="matching-results" class="d-none animate-fade-in">
+                                <h3 class="h4 fw-bold mb-2">Matching Analysis Results</h3>
+                                <p class="text-secondary small mb-4">Compatibility matches calculated mathematically based on overlapping profile traits.</p>
+                                
+                                <div class="list-group list-group-flush mb-4" id="matching-results-list">
+                                    <!-- Dynamically filled sorted matched careers -->
+                                </div>
+                                
+                                <div class="text-center mt-4">
+                                    <button class="btn btn-outline-secondary px-5 py-3 border-secondary rounded-pill" id="match-reset-btn">Reset & Take Test Again</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Skill Gap Analyzer -->
+            <section class="view-section animate-fade-in" id="view-analyzer">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9">
+                        <div class="glass-panel p-5 border-secondary">
+                            <h1 class="h3 fw-bold mb-1" style="font-family: var(--font-heading);">Skill Gap Analyzer</h1>
+                            <p class="text-secondary small mb-4">Select a target career and compare requirements against your current skills.</p>
+
+                            <div class="row g-4 mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="analyzer-target-select">Select Target Career</label>
+                                    <select class="form-select glass-select" id="analyzer-target-select"></select>
+                                </div>
+                                <div class="col-md-6 d-flex align-items-end">
+                                    <button class="btn bg-gradient-accent text-white w-100 py-3 border-0 fw-bold rounded-pill shadow" id="run-analyzer-btn">Compare & Analyze</button>
+                                </div>
+                            </div>
+
+                            <div class="d-none mt-5 animate-fade-in" id="analyzer-results-panel">
+                                <h3 class="h5 fw-bold mb-4">Analysis: <span class="text-gradient" id="analyzer-title-label">Career Path</span></h3>
+                                
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <div class="glass-card p-4 border-success h-100">
+                                            <h4 class="h6 fw-bold mb-3 text-success"><i class="bi bi-check-circle-fill"></i> Skills You Already Have</h4>
+                                            <div class="d-flex flex-wrap gap-2" id="analyzer-have-skills">
+                                                <span class="text-muted small">None selected in profile yet.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="glass-card p-4 border-danger h-100">
+                                            <h4 class="h6 fw-bold mb-3 text-danger"><i class="bi bi-x-circle-fill"></i> Missing Skills Gap</h4>
+                                            <div class="d-flex flex-wrap gap-2" id="analyzer-missing-skills"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="glass-card p-4 mt-4">
+                                    <h4 class="h6 fw-bold mb-3 text-primary"><i class="bi bi-lightbulb-fill"></i> Recommended Next Steps</h4>
+                                    <ul class="mb-0 text-secondary small" id="analyzer-steps-list">
+                                        <li>Add missing skills via projects or certifications to close this gap.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Learning Roadmap Generator -->
+            <section class="view-section animate-fade-in" id="view-roadmap">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+                    <div>
+                        <h1 class="h3 fw-bold mb-1">Learning Roadmap Timeline</h1>
+                        <p class="text-secondary small mb-0">Track completed topics. Check marks update your overall readiness index.</p>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <select class="form-select glass-select py-2 px-3 border-secondary" id="roadmap-career-select" style="min-width: 200px;"></select>
+                        <button class="btn btn-outline-secondary rounded-pill px-4 py-2 border-secondary" id="roadmap-print-btn">
+                            <i class="bi bi-printer"></i> Print Roadmap
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="glass-panel p-5 border-secondary">
+                            <h3 class="h4 fw-bold mb-4" id="roadmap-title-label">Career Roadmap</h3>
+                            
+                            <div class="timeline-wrapper" id="roadmap-timeline-container">
+                                <!-- Loaded dynamically via script -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="glass-card p-4 text-center mb-4">
+                            <h3 class="h6 fw-bold mb-3">Roadmap Completion</h3>
+                            <h2 class="fw-bold mb-3 text-primary" id="roadmap-percent-label">0%</h2>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-gradient-cyan" role="progressbar" id="roadmap-percent-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="glass-card p-4">
+                            <h3 class="h6 fw-bold mb-3">Key Focus Areas</h3>
+                            <ul class="list-unstyled mb-0 small text-secondary" id="roadmap-tips-list">
+                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> Toggle items as you progress.</li>
+                                <li class="mb-2"><i class="bi bi-check-circle text-primary me-2"></i> Start with beginner fundamentals first.</li>
+                                <li class="mb-0"><i class="bi bi-check-circle text-primary me-2"></i> Build projects to cement concepts.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Project Recommendation Center -->
+            <section class="view-section animate-fade-in" id="view-projects">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+                    <div>
+                        <h1 class="h3 fw-bold mb-1">Project Recommendation Center</h1>
+                        <p class="text-secondary small mb-0">Cement your knowledge with structured development tasks.</p>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <select class="form-select glass-select py-2 px-3 border-secondary" id="project-career-filter" style="min-width: 180px;"></select>
+                        <select class="form-select glass-select py-2 px-3 border-secondary" id="project-diff-filter">
+                            <option value="all">All Difficulties</option>
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row g-4" id="projects-grid">
+                    <!-- Project cards loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- 7. Certification Hub -->
+            <section class="view-section animate-fade-in" id="view-certifications">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+                    <div>
+                        <h1 class="h3 fw-bold mb-1">Certification Hub</h1>
+                        <p class="text-secondary small mb-0">Browse credentials and validation paths from major vendors.</p>
+                    </div>
+                    <div class="glass-panel p-1 d-flex gap-1" id="cert-provider-filters">
+                        <button class="pill-badge active" data-provider="all">All Vendors</button>
+                        <button class="pill-badge" data-provider="Google">Google</button>
+                        <button class="pill-badge" data-provider="AWS">AWS</button>
+                        <button class="pill-badge" data-provider="Microsoft">Microsoft</button>
+                        <button class="pill-badge" data-provider="IBM">IBM</button>
+                    </div>
+                </div>
+
+                <div class="row g-4" id="certifications-grid">
+                    <!-- Loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- 8. Resume Builder -->
+            <section class="view-section animate-fade-in" id="view-resume">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+                    <div>
+                        <h1 class="h3 fw-bold mb-1">Professional Resume Builder</h1>
+                        <p class="text-secondary small mb-0">Complete details to construct a single-page printable resume.</p>
+                    </div>
+                    <button class="btn bg-gradient-accent text-white px-4 py-2 rounded-pill border-0 shadow-sm" id="print-resume-btn">
+                        <i class="bi bi-file-pdf"></i> Download PDF Layout
+                    </button>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-5 no-print">
+                        <div class="glass-panel p-4 border-secondary mb-4">
+                            <h3 class="h5 fw-bold mb-4">Resume Details Form</h3>
+                            
+                            <form id="resume-form">
+                                <h4 class="h6 fw-bold text-primary mb-3">1. Personal Info</h4>
+                                <div class="mb-3">
+                                    <label class="form-label" for="res-name">Full Name</label>
+                                    <input type="text" class="form-control glass-input" id="res-name" placeholder="John Doe" value="John Doe">
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <label class="form-label" for="res-email">Email</label>
+                                        <input type="email" class="form-control glass-input" id="res-email" placeholder="john@example.com" value="john@example.com">
+                                    </div>
+                                    <div class="col">
+                                        <label class="form-label" for="res-phone">Phone</label>
+                                        <input type="text" class="form-control glass-input" id="res-phone" placeholder="9876543210" value="+1 555-0199">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="res-links">GitHub / Portfolio Links</label>
+                                    <input type="text" class="form-control glass-input" id="res-links" placeholder="github.com/username" value="linkedin.com/in/johndoe">
+                                </div>
+                                
+                                <h4 class="h6 fw-bold text-primary mb-3 mt-4">2. Academic Background</h4>
+                                <div class="mb-3">
+                                    <label class="form-label" for="res-degree">Degree & Major</label>
+                                    <input type="text" class="form-control glass-input" id="res-degree" placeholder="B.S. Computer Science" value="B.Tech Computer Science">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="res-uni">University / College</label>
+                                    <input type="text" class="form-control glass-input" id="res-uni" placeholder="Stanford University" value="State University of Tech">
+                                </div>
+                                
+                                <h4 class="h6 fw-bold text-primary mb-3 mt-4">3. Summary</h4>
+                                <div class="mb-3">
+                                    <label class="form-label" for="res-summary">Objective Statement</label>
+                                    <textarea class="form-control glass-textarea" id="res-summary" rows="3" placeholder="Passionate developer specializing in...">Aspiring developer skilled in frontend architecture, API integration, and database management, looking to leverage credentials in practical environments.</textarea>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <h3 class="h5 fw-bold mb-3 no-print">Live Preview Layout</h3>
+                        <div class="resume-preview-container" id="resume-document">
+                            <!-- Filled dynamically by matching form data and storage datasets -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 9. Interview Preparation Portal -->
+            <section class="view-section animate-fade-in" id="view-interviews">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+                    <div>
+                        <h1 class="h3 fw-bold mb-1">Interview Preparation Portal</h1>
+                        <p class="text-secondary small mb-0">Drill interview questions grouped by domains and categories.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select glass-select border-secondary" id="interview-career-select"></select>
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-lg-9">
+                        <ul class="nav nav-pills glass-panel p-2 gap-2 border-secondary mb-4" role="tablist">
+                            <li class="nav-item">
+                                <button class="nav-link active text-white" id="prep-tech-tab" data-bs-toggle="pill" data-category="tech">Technical Q&A</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link text-white" id="prep-hr-tab" data-bs-toggle="pill" data-category="hr">HR & Behavior</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link text-white" id="prep-aptitude-tab" data-bs-toggle="pill" data-category="aptitude">Quantitative Aptitude</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link text-white" id="prep-gd-tab" data-bs-toggle="pill" data-category="gd">Group Discussions</button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" id="prep-cards-container">
+                            <!-- Populated with flipcards or lists of questions and answers -->
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3">
+                        <div class="glass-card p-4">
+                            <h3 class="h6 fw-bold mb-3">Preparation Strategy</h3>
+                            <ul class="list-unstyled mb-0 small text-secondary">
+                                <li class="mb-3"><i class="bi bi-info-circle text-primary me-2"></i> Click cards to flip and reveal target model answers.</li>
+                                <li class="mb-3"><i class="bi bi-info-circle text-primary me-2"></i> Quantitative aptitude keys focus on calculations.</li>
+                                <li class="mb-0"><i class="bi bi-info-circle text-primary me-2"></i> GD topics represent standard themes.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 10. Progress Tracker -->
+            <section class="view-section animate-fade-in" id="view-tracker">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h1 class="h3 fw-bold mb-1">Progress Tracker</h1>
+                        <p class="text-secondary small mb-0">Granular view of your completed items and milestone status.</p>
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="glass-card p-4 text-center">
+                            <div class="fs-1 text-primary mb-2"><i class="bi bi-code-slash"></i></div>
+                            <h2 class="fw-bold mb-1" id="track-skills-count">0</h2>
+                            <p class="text-secondary small mb-0">Skills Verified</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="glass-card p-4 text-center">
+                            <div class="fs-1 text-success mb-2"><i class="bi bi-folder-check"></i></div>
+                            <h2 class="fw-bold mb-1" id="track-projects-count">0</h2>
+                            <p class="text-secondary small mb-0">Projects Completed</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="glass-card p-4 text-center">
+                            <div class="fs-1 text-warning mb-2"><i class="bi bi-patch-check"></i></div>
+                            <h2 class="fw-bold mb-1" id="track-certs-count">0</h2>
+                            <p class="text-secondary small mb-0">Certifications Saved</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="glass-card p-4 text-center">
+                            <div class="fs-1 text-info mb-2"><i class="bi bi-activity"></i></div>
+                            <h2 class="fw-bold mb-1" id="track-readiness-percent">0%</h2>
+                            <p class="text-secondary small mb-0">Readiness Percentage</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="glass-card p-4 h-100">
+                            <h3 class="h5 fw-bold mb-3">Completed Certifications</h3>
+                            <div class="table-responsive">
+                                <table class="table table-borderless text-secondary small align-middle mb-0">
+                                    <thead>
+                                        <tr class="border-bottom border-secondary border-opacity-10 text-primary">
+                                            <th>Certification</th>
+                                            <th>Provider</th>
+                                            <th>Difficulty</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="track-certs-table">
+                                        <tr><td colspan="3" class="text-center py-4 text-muted">No certifications completed yet.</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="glass-card p-4 h-100">
+                            <h3 class="h5 fw-bold mb-3">Completed Projects</h3>
+                            <div class="table-responsive">
+                                <table class="table table-borderless text-secondary small align-middle mb-0">
+                                    <thead>
+                                        <tr class="border-bottom border-secondary border-opacity-10 text-primary">
+                                            <th>Project</th>
+                                            <th>Difficulty</th>
+                                            <th>Estimated Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="track-projects-table">
+                                        <tr><td colspan="3" class="text-center py-4 text-muted">No projects completed yet.</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 11. Profile Page -->
+            <section class="view-section animate-fade-in" id="view-profile">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9">
+                        <div class="glass-panel p-5 border-secondary">
+                            <h1 class="h3 fw-bold mb-1" style="font-family: var(--font-heading);">Profile & Skill Catalog</h1>
+                            <p class="text-secondary small mb-4">Edit profile parameters and select existing skills to update analytics.</p>
+
+                            <form id="profile-form">
+                                <div class="row g-4 mb-4">
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="profile-name">Student Full Name</label>
+                                        <input type="text" class="form-control glass-input" id="profile-name" placeholder="John Doe">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="profile-goal-select">Active Career Target Goal</label>
+                                        <select class="form-select glass-select" id="profile-goal-select"></select>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label" for="profile-bio">Bio Statement</label>
+                                    <textarea class="form-control glass-textarea" id="profile-bio" rows="3" placeholder="Explain your professional interests..."></textarea>
+                                </div>
+
+                                <h3 class="h5 fw-bold mb-3 mt-5">Select Your Existing Skills</h3>
+                                <p class="text-secondary small mb-3">Checking items here marks them as completed skills inside your dashboard metrics and gap analysis calculations.</p>
+                                <div class="row g-2 mb-4" id="profile-skills-checklist">
+                                    <!-- Populated dynamically with checkbox nodes for all skills -->
+                                </div>
+
+                                <div class="text-end mt-5 d-flex justify-content-between">
+                                    <button type="button" class="btn btn-outline-danger px-4 py-2 border-danger rounded-pill" id="profile-reset-btn">Reset All Storage Data</button>
+                                    <button type="submit" class="btn bg-gradient-accent text-white px-5 py-3 border-0 fw-bold rounded-pill shadow-sm">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Career Comparison Modal -->
+    <div class="modal fade" id="compareModal" tabindex="-1" aria-labelledby="compareModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content glass-panel border border-secondary p-4 text-white">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold" id="compareModalLabel" style="font-family: var(--font-heading);">Compare Career Tracks</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label" for="compare-select-1">First Career Path</label>
+                            <select class="form-select glass-select" id="compare-select-1"></select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="compare-select-2">Second Career Path</label>
+                            <select class="form-select glass-select" id="compare-select-2"></select>
+                        </div>
+                    </div>
+
+                    <div class="row border-top border-secondary border-opacity-15 pt-4 text-secondary small" id="compare-details-row">
+                        <div class="col-md-6 compare-col" id="compare-details-1"></div>
+                        <div class="col-md-6 compare-col" id="compare-details-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Static Data Layer -->
+    <script src="js/data.js"></script>
+    <!-- Main App Engine logic -->
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream2Career - Intelligent Career Guidance Platform</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Landing Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top landing-navbar py-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="index.html" style="font-family: var(--font-heading); color: var(--text-primary);">
+                <div class="sidebar-logo-icon" style="width: 32px; height: 32px; font-size: 16px;">D2C</div>
+                <span>Dream2Career</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="filter: invert(var(--text-primary) === '#f8fafc' ? 1 : 0);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto gap-1">
+                    <li class="nav-item"><a class="nav-link px-3 text-secondary fw-semibold" href="#overview">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 text-secondary fw-semibold" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 text-secondary fw-semibold" href="#careers">Careers</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 text-secondary fw-semibold" href="#faq">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 text-secondary fw-semibold" href="#contact">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3">
+                    <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark/light theme">
+                        <i class="bi bi-sun-fill" id="theme-icon"></i>
+                    </button>
+                    <a href="app.html" class="btn bg-gradient-accent text-white px-4 py-2 border-0 fw-semibold rounded-pill shadow-sm hover-lift">Launch App</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="hero-glow-1"></div>
+        <div class="hero-glow-2"></div>
+        <div class="container text-center pt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <span class="badge rounded-pill bg-dark border border-secondary px-3 py-2 text-gradient fw-bold mb-4">100% Algorithmic & Data-Driven</span>
+                    <h1 class="display-3 fw-extrabold mb-4" style="font-family: var(--font-heading); line-height: 1.15;">
+                        Navigate Your Journey from <br>
+                        <span class="text-gradient">Dream to Career</span>
+                    </h1>
+                    <p class="lead text-secondary mb-5 mx-auto" style="max-width: 700px; font-weight: 500;">
+                        Discover career paths, analyze your skill gaps, generate customized visual roadmaps, and build a resume with a completely client-side, zero-API career advisor.
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="app.html#matching" class="btn bg-gradient-accent text-white px-5 py-3 border-0 fw-bold rounded-pill shadow-lg">Start Matching Test</a>
+                        <a href="app.html#explorer" class="btn glass-card text-primary px-5 py-3 fw-bold rounded-pill border-secondary">Explore Career Paths</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="py-5" id="overview">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="h1 fw-bold" style="font-family: var(--font-heading);">Structured Guidance, No Gimmicks</h2>
+                <p class="text-secondary">We rely on transparent career profiling and logical mapping algorithms.</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="glass-card p-4 h-100 text-center">
+                        <div class="fs-1 text-info mb-3"><i class="bi bi-shield-check"></i></div>
+                        <h3 class="h5 fw-bold mb-3">Privacy & Zero APIs</h3>
+                        <p class="text-secondary small mb-0">All calculations, analyses, and resume building are conducted on your machine. We do not use third-party APIs or collect private data.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card p-4 h-100 text-center">
+                        <div class="fs-1 text-primary mb-3"><i class="bi bi-cpu-fill"></i></div>
+                        <h3 class="h5 fw-bold mb-3">Logical Skill Analysis</h3>
+                        <p class="text-secondary small mb-0">Your matching scores and recommended tasks are derived mathematically from matching criteria databases and exact requirements.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card p-4 h-100 text-center">
+                        <div class="fs-1 text-success mb-3"><i class="bi bi-file-earmark-person"></i></div>
+                        <h3 class="h5 fw-bold mb-3">Full Showcase Toolkit</h3>
+                        <p class="text-secondary small mb-0">Prepare for interviews with structured question banks, map progress indices, and download customized resume layouts instantly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section class="py-5 bg-opacity-10 bg-secondary" id="features">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="h1 fw-bold" style="font-family: var(--font-heading);">Platform Capabilities</h2>
+                <p class="text-secondary">Everything a student needs to outline and track their professional development.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="glass-card p-4 h-100">
+                        <div class="sidebar-logo-icon mb-3" style="width: 50px; height: 50px; font-size: 24px;"><i class="bi bi-shuffle"></i></div>
+                        <h3 class="h5 fw-bold mb-2">Career Matching</h3>
+                        <p class="text-secondary small mb-0">Enter your subjects, strengths, and interests to receive structured compatibility breakdowns.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="glass-card p-4 h-100">
+                        <div class="sidebar-logo-icon mb-3" style="width: 50px; height: 50px; font-size: 24px;"><i class="bi bi-activity"></i></div>
+                        <h3 class="h5 fw-bold mb-2">Skill Gap Analyzer</h3>
+                        <p class="text-secondary small mb-0">Select your current knowledge and target career to identify exact missing technologies.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="glass-card p-4 h-100">
+                        <div class="sidebar-logo-icon mb-3" style="width: 50px; height: 50px; font-size: 24px;"><i class="bi bi-signpost-split"></i></div>
+                        <h3 class="h5 fw-bold mb-2">Visual Roadmaps</h3>
+                        <p class="text-secondary small mb-0">Follow phased timeline roadmaps from beginner to industry-ready levels.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="glass-card p-4 h-100">
+                        <div class="sidebar-logo-icon mb-3" style="width: 50px; height: 50px; font-size: 24px;"><i class="bi bi-file-earmark-text"></i></div>
+                        <h3 class="h5 fw-bold mb-2">Resume Builder</h3>
+                        <p class="text-secondary small mb-0">Input credentials and compile a clean resume layout styled for instant PDF printing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Categories -->
+    <section class="py-5" id="careers">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="h1 fw-bold" style="font-family: var(--font-heading);">Explore Mapped Career Paths</h2>
+                <p class="text-secondary">Get structured lists of skills, tools, roadmaps, and preparation materials for 8 roles.</p>
+            </div>
+            <div class="row g-4" id="careers-grid">
+                <!-- Will be dynamically populated with details of the 8 roles from JS to ensure consistent state -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-5 bg-gradient-accent text-white rounded-5 mx-3 mx-md-5 my-5 shadow-lg">
+        <div class="container py-4 text-center">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <h2 class="display-4 fw-extrabold" style="font-family: var(--font-heading);">8</h2>
+                    <p class="mb-0 fw-semibold text-white-50">Standard Careers</p>
+                </div>
+                <div class="col-md-3">
+                    <h2 class="display-4 fw-extrabold" style="font-family: var(--font-heading);">40+</h2>
+                    <p class="mb-0 fw-semibold text-white-50">Core Skills Mapped</p>
+                </div>
+                <div class="col-md-3">
+                    <h2 class="display-4 fw-extrabold" style="font-family: var(--font-heading);">9+</h2>
+                    <p class="mb-0 fw-semibold text-white-50">Industry Credentials</p>
+                </div>
+                <div class="col-md-3">
+                    <h2 class="display-4 fw-extrabold" style="font-family: var(--font-heading);">100%</h2>
+                    <p class="mb-0 fw-semibold text-white-50">Client-Side Logic</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5" id="faq">
+        <div class="container py-4" style="max-width: 800px;">
+            <div class="text-center mb-5">
+                <h2 class="h1 fw-bold" style="font-family: var(--font-heading);">Frequently Asked Questions</h2>
+                <p class="text-secondary">Learn more about how the platform calculates matching recommendations.</p>
+            </div>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item glass-card mb-3 border border-secondary overflow-hidden">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-transparent text-primary fw-bold collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#faq-1">
+                            How does the career matching system work?
+                        </button>
+                    </h2>
+                    <div id="faq-1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-secondary small">
+                            The matching system calculates a mathematical Match Index by mapping your interests, favorite subjects, and strengths against predefined requirements for each career. It matches overlaps exactly and ranks the profiles based on the highest total intersection points.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item glass-card mb-3 border border-secondary overflow-hidden">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-transparent text-primary fw-bold collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#faq-2">
+                            Where is my profile data stored?
+                        </button>
+                    </h2>
+                    <div id="faq-2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-secondary small">
+                            Your profile, bookmarks, roadmap tasks, and resume data are saved completely inside your browser's local storage. No data is sent to external servers, protecting your privacy and security.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item glass-card mb-3 border border-secondary overflow-hidden">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-transparent text-primary fw-bold collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#faq-3">
+                            Can I print or download my roadmap and resume?
+                        </button>
+                    </h2>
+                    <div id="faq-3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-secondary small">
+                            Yes! The resume builder features custom CSS printing stylesheets that hide the dashboard wrappers, printing a clean, professionally formatted resume. You can also print the roadmap timeline from your dashboard using standard browser shortcuts.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Page/Section -->
+    <section class="py-5 bg-opacity-10 bg-secondary" id="contact">
+        <div class="container py-4" style="max-width: 600px;">
+            <div class="glass-panel p-5 border-secondary">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold" style="font-family: var(--font-heading);">Get in Touch</h2>
+                    <p class="text-secondary small">Have feedback or suggestions? Send us a message.</p>
+                </div>
+                <form id="contact-form">
+                    <div class="mb-3">
+                        <label for="contact-name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control glass-input" id="contact-name" placeholder="John Doe" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contact-email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control glass-input" id="contact-email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contact-msg" class="form-label">Message</label>
+                        <textarea class="form-control glass-textarea" id="contact-msg" rows="4" placeholder="Your questions or feedback..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn bg-gradient-accent text-white w-100 py-3 fw-bold rounded-pill border-0 shadow mt-2">Send Message</button>
+                </form>
+                <div id="contact-success" class="alert alert-success d-none mt-3 text-center border-0 glass-panel" style="background: rgba(16, 185, 129, 0.1); color: var(--accent-success);">
+                    Message received! Thank you for contacting Dream2Career.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 border-top border-secondary text-secondary">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <a class="d-flex align-items-center justify-content-center justify-content-md-start gap-2 fw-bold text-decoration-none mb-3" href="#" style="font-family: var(--font-heading); color: var(--text-primary);">
+                        <div class="sidebar-logo-icon" style="width: 28px; height: 28px; font-size: 13px;">D2C</div>
+                        <span>Dream2Career</span>
+                    </a>
+                    <p class="small mb-0">An algorithmic career planner and roadmap advisor helping students navigate their transition from academics to industry readiness.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="d-flex justify-content-center justify-content-md-end gap-3 mb-3 fs-5">
+                        <a href="#" class="text-secondary hover-lift"><i class="bi bi-github"></i></a>
+                        <a href="#" class="text-secondary hover-lift"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-secondary hover-lift"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                    <p class="small mb-0">&copy; 2026 Dream2Career. All rights reserved. Created for showcase portfolio.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Static Careers Data -->
+    <script src="js/data.js"></script>
+    <!-- Landing Page Logic -->
+    <script>
+        // Set up dark/light mode toggle
+        const toggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            if (theme === 'light') {
+                themeIcon.className = 'bi bi-moon-fill';
+            } else {
+                themeIcon.className = 'bi bi-sun-fill';
+            }
+        }
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(savedTheme);
+
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            setTheme(currentTheme === 'light' ? 'dark' : 'light');
+        });
+
+        // Dynamic Loading of Careers Grid
+        const grid = document.getElementById('careers-grid');
+        CAREERS_DB.forEach(career => {
+            const col = document.createElement('div');
+            col.className = 'col-lg-3 col-md-6';
+            col.innerHTML = `
+                <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="fs-2 mb-3 text-gradient"><i class="bi ${career.icon}"></i></div>
+                        <h3 class="h5 fw-bold mb-2">${career.name}</h3>
+                        <p class="text-secondary small mb-3">${career.description.substring(0, 90)}...</p>
+                    </div>
+                    <div>
+                        <div class="d-flex flex-wrap gap-1 mb-3">
+                            ${career.skills.slice(0, 3).map(skill => `<span class="badge bg-secondary bg-opacity-20 text-secondary border border-secondary border-opacity-10">${skill}</span>`).join('')}
+                        </div>
+                        <a href="app.html#explorer?career=${career.id}" class="text-primary text-decoration-none small fw-bold d-inline-flex align-items-center gap-1">
+                            Explore Path <i class="bi bi-arrow-right-short"></i>
+                        </a>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(col);
+        });
+
+        // Contact form handling
+        const contactForm = document.getElementById('contact-form');
+        const successMsg = document.getElementById('contact-success');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            contactForm.reset();
+            successMsg.classList.remove('d-none');
+            setTimeout(() => {
+                successMsg.classList.add('d-none');
+            }, 4000);
+        });
+    </script>
+</body>
+</html>
